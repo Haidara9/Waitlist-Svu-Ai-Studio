@@ -376,19 +376,52 @@ export const WaitlistLanding: React.FC = () => {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-16">
         <div className="w-full max-w-lg mx-auto flex flex-col gap-7 animate-fade-up">
 
-          {/* Brand badge */}
-          <div className="flex justify-center">
+          {/* Brand badges */}
+          <div className="flex flex-col items-center gap-2">
+            {/* From FTM — white glass gradient */}
             <div
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
               style={{
-                background: "rgba(29,78,216,0.12)",
-                border: "1px solid rgba(59,130,246,0.25)",
-                backdropFilter: "blur(12px)",
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.18)",
+                backdropFilter: "blur(14px)",
               }}
             >
-              <SparklesIcon className="w-3.5 h-3.5 text-blue-400" />
-              <span className="text-[10px] font-bold tracking-widest text-blue-300 uppercase">
-                By Focus Media Team
+              <SparklesIcon className="w-3.5 h-3.5" style={{ color: "rgba(255,255,255,0.7)" }} />
+              <span
+                className="text-[10px] font-bold tracking-widest uppercase"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(110deg, #ffffff 0%, #e2e8f0 40%, #94a3b8 70%, #ffffff 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                From FTM
+              </span>
+            </div>
+
+            {/* By HYDRA — blue-red liquid gradient */}
+            <div
+              className="inline-flex items-center gap-2 px-4 py-1 rounded-full"
+              style={{
+                background: "rgba(0,0,0,0.18)",
+                border: "1px solid rgba(99,102,241,0.2)",
+                backdropFilter: "blur(10px)",
+              }}
+            >
+              <span
+                className="text-[11px] font-black tracking-widest uppercase"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(110deg, #60a5fa 0%, #3b82f6 25%, #8b5cf6 50%, #ef4444 75%, #dc2626 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                By HYDRA
               </span>
             </div>
           </div>
@@ -396,10 +429,11 @@ export const WaitlistLanding: React.FC = () => {
           {/* Headline */}
           <div className="text-center space-y-2">
             <h1
-              className="font-black tracking-tight leading-none select-none animate-gradient bg-clip-text"
+              className="font-black leading-none select-none animate-gradient bg-clip-text whitespace-nowrap"
               style={{
                 fontFamily: "Orbitron, sans-serif",
-                fontSize: "clamp(2.4rem, 8.5vw, 4.8rem)",
+                fontSize: "clamp(1.5rem, 6.5vw, 4rem)",
+                letterSpacing: "-0.01em",
                 backgroundImage:
                   "linear-gradient(130deg, #93c5fd 0%, #3b82f6 30%, #ef4444 68%, #dc2626 100%)",
                 WebkitBackgroundClip: "text",
@@ -414,9 +448,6 @@ export const WaitlistLanding: React.FC = () => {
               style={{ fontFamily: "Cairo, sans-serif" }}
             >
               المرافق الأكاديمي الذكي
-            </p>
-            <p className="text-xs text-slate-500 tracking-wide">
-              Academic Zameel · From Hedra
             </p>
           </div>
 
