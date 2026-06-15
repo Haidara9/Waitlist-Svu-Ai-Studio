@@ -4,15 +4,14 @@
   --color-theme-bg: var(--theme-bg);
   --color-theme-surface: var(--theme-surface);
   --color-theme-text: var(--theme-text);
-
   --font-cairo: "Cairo", sans-serif;
   --font-orbitron: "Orbitron", sans-serif;
 }
 
 :root {
-  --theme-bg: #000000;
-  --theme-surface: #0a0a0a;
-  --theme-text: #fafafa;
+  --theme-bg: #050A14;
+  --theme-surface: #0A1628;
+  --theme-text: #f8fafc;
 }
 
 body {
@@ -24,47 +23,49 @@ body {
   overflow-x: hidden;
 }
 
+/* Glass panel — deep navy + blue border */
 .glass-panel {
-  background: rgba(10, 10, 10, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  background: rgba(8, 18, 40, 0.75);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), 0 0 60px rgba(29, 78, 216, 0.06);
 }
 
-.bg-dot-grid {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* Soft floating background blobs */
+/* Floating ambient blobs */
 .animate-float {
-  animation: float 16s ease-in-out infinite;
+  animation: float 18s ease-in-out infinite;
 }
 .animate-float-slow {
-  animation: float 24s ease-in-out infinite;
+  animation: float 26s ease-in-out infinite;
 }
 @keyframes float {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(24px, -32px) scale(1.08); }
+  50% { transform: translate(28px, -36px) scale(1.07); }
 }
 
 /* Staggered entrance */
 .animate-fade-up {
-  animation: fade-up .6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Animated gradient text/wordmark */
+/* Animated gradient text */
 .animate-gradient {
   background-size: 200% auto;
-  animation: gradient-pan 6s linear infinite;
+  animation: gradient-pan 7s linear infinite;
 }
 @keyframes gradient-pan {
   to { background-position: 200% center; }
+}
+
+/* Dot-grid background helper */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(59, 130, 246, 0.12) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -76,17 +77,12 @@ body {
   }
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(59, 130, 246, 0.18);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(59, 130, 246, 0.32);
 }
