@@ -96,12 +96,16 @@ function ParticleCanvas() {
 function FeatureCard({
   icon: Icon,
   title,
+  titleAr,
   description,
+  descriptionAr,
   accent = "blue",
 }: {
   icon: React.ComponentType<{ className?: string }>;
   title: string;
+  titleAr?: string;
   description: string;
+  descriptionAr?: string;
   accent?: "blue" | "red" | "orange";
 }) {
   const colors = {
@@ -122,8 +126,14 @@ function FeatureCard({
       >
         <span style={{ color: c.text }}><Icon className="w-6 h-6" /></span>
       </div>
-      <h3 className="text-base font-bold text-white">{title}</h3>
-      <p className="text-sm text-slate-400 leading-relaxed">{description}</p>
+      <div className="space-y-0.5">
+        <h3 className="text-base font-bold text-white">{title}</h3>
+        {titleAr && <p className="text-[11px] text-slate-500" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>{titleAr}</p>}
+      </div>
+      <div className="space-y-1">
+        <p className="text-sm text-slate-400 leading-relaxed">{description}</p>
+        {descriptionAr && <p className="text-[11px] text-slate-500 leading-relaxed" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>{descriptionAr}</p>}
+      </div>
     </div>
   );
 }
@@ -269,7 +279,6 @@ export function WaitlistLanding() {
           </span>
         </div>
         <div className="flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}>
-          <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "#94a3b8" }}>Team</span>
           <span className="text-xs font-black tracking-wide" style={{ backgroundImage: "linear-gradient(110deg, #ffffff, #cbd5e1)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>From FTM</span>
         </div>
       </nav>
@@ -294,8 +303,14 @@ export function WaitlistLanding() {
                 <br />
                 <span className="text-white">Starts Here</span>
               </h1>
+              <p className="text-xs md:text-sm text-slate-500 leading-relaxed max-w-lg" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>
+                مستقبل التعليم بالذكاء الاصطناعي يبدأ من هنا
+              </p>
               <p className="text-base md:text-lg text-slate-400 leading-relaxed max-w-lg">
                 Join Svu Ai Studio — the all-in-one platform built for students, creators, and innovators. Learn, build, and grow with the power of AI.
+              </p>
+              <p className="text-xs text-slate-500 leading-relaxed max-w-lg" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>
+                انضم إلى SVU AI Studio — المنصة المتكاملة للطلاب والمبدعين والمبتكرين. تعلّم، ابنِ، وانمُ بقوة الذكاء الاصطناعي.
               </p>
             </div>
 
@@ -340,7 +355,9 @@ export function WaitlistLanding() {
                       <UserGroupIcon className="w-7 h-7 text-white" />
                     </div>
                     <h2 className="text-xl font-black text-white mb-1">Join Svu Ai Studio</h2>
+                    <p className="text-[11px] text-slate-500 mb-2" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>انضم إلى قائمة الانتظار</p>
                     <p className="text-sm text-slate-400">Create your account to be part of the future of AI learning and innovation.</p>
+                    <p className="text-[11px] text-slate-500 mt-1" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>سجّل لتكون جزءاً من مستقبل التعلّم بالذكاء الاصطناعي.</p>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-4" noValidate>
@@ -394,7 +411,10 @@ export function WaitlistLanding() {
                           Creating Account...
                         </span>
                       ) : (
-                        "Create Account"
+                        <span className="flex items-center justify-center gap-2">
+                          Create Account
+                          <span className="text-[10px] opacity-70" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>· إنشاء حساب</span>
+                        </span>
                       )}
                     </button>
                   </form>
@@ -405,11 +425,14 @@ export function WaitlistLanding() {
                     <CheckCircleIcon className="w-9 h-9 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-black text-white mb-2">You&apos;re In! 🎉</h2>
+                    <h2 className="text-xl font-black text-white mb-1">You&apos;re In! 🎉</h2>
+                    <p className="text-[11px] text-slate-500 mb-3" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>تم تسجيلك بنجاح</p>
                     <p className="text-sm text-slate-400 leading-relaxed">Your registration was successful. We&apos;ll send you the early access link very soon.</p>
+                    <p className="text-xs text-slate-500 leading-relaxed mt-2" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>سيصلك رابط الوصول المبكر للمنصة قريباً جداً.</p>
                   </div>
                   <div className="rounded-xl p-4" style={{ background: "rgba(37,99,235,0.06)", border: "1px solid rgba(37,99,235,0.15)" }}>
                     <p className="text-xs text-blue-300">A confirmation email has been sent to your inbox.</p>
+                    <p className="text-[10px] text-blue-400/70 mt-1" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>تم إرسال إيميل التأكيد إلى بريدك.</p>
                   </div>
                 </div>
               )}
@@ -430,11 +453,15 @@ export function WaitlistLanding() {
               </div>
               <div>
                 <p className="text-sm font-bold text-white">Be one of the first to experience Svu Ai Studio.</p>
-                <p className="text-xs text-slate-400">Sign up now and get early access to exclusive features and learning tools.</p>
+                <p className="text-[11px] text-slate-500" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>كن من أوائل المستخدمين لـ SVU AI Studio</p>
+                <p className="text-xs text-slate-400 mt-1">Sign up now and get early access to exclusive features and learning tools.</p>
               </div>
             </div>
             <a href="#hero" className="shrink-0 flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white transition-all duration-200 hover:scale-105" style={{ background: "linear-gradient(135deg, #2563EB, #1d4ed8)", boxShadow: "0 4px 16px rgba(37,99,235,0.3)" }}>
-              Join the Waitlist
+              <span className="flex flex-col items-end leading-tight">
+                <span>Join the Waitlist</span>
+                <span className="text-[9px] opacity-75" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>انضم لقائمة الانتظار</span>
+              </span>
               <ArrowRightIcon className="w-4 h-4" />
             </a>
           </div>
@@ -454,44 +481,58 @@ export function WaitlistLanding() {
               </span>
               ?
             </h2>
+            <p className="text-sm text-slate-500" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>لماذا تنضم إلى SVU AI Studio؟</p>
             <p className="text-slate-400 text-sm max-w-md mx-auto">Everything you need to study smarter, powered by cutting-edge AI technology.</p>
+            <p className="text-xs text-slate-500 max-w-md mx-auto" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>كل ما تحتاجه للدراسة بذكاء أكبر، مدعوماً بأحدث تقنيات الذكاء الاصطناعي.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <FeatureCard
               icon={CpuChipIcon}
               title="AI Exam Generator"
+              titleAr="مولّد الاختبارات الذكي"
               description="Generate practice exams from your study materials using AI. Get custom questions tailored to your curriculum."
+              descriptionAr="أنشئ اختبارات تدريبية من موادك الدراسية باستخدام الذكاء الاصطناعي، مع أسئلة مخصصة لمنهجك."
               accent="blue"
             />
             <FeatureCard
               icon={BookOpenIcon}
               title="Smart Study Planner"
+              titleAr="مخطط الدراسة الذكي"
               description="AI-powered scheduling that adapts to your progress, deadlines, and learning pace."
+              descriptionAr="جدولة ذكية تتكيّف مع تقدّمك ومواعيدك النهائية وسرعتك في التعلّم."
               accent="blue"
             />
             <FeatureCard
               icon={BoltIcon}
               title="Flashcards Generator"
+              titleAr="مولّد البطاقات التعليمية"
               description="Automatically create smart flashcards from PDFs, lectures, and notes with spaced repetition."
+              descriptionAr="ينشئ بطاقات تعليمية ذكية تلقائياً من ملفات PDF والمحاضرات والملاحظات."
               accent="orange"
             />
             <FeatureCard
               icon={SparklesIcon}
               title="Golden Sheets Mode"
+              titleAr="وضع الأوراق الذهبية"
               description="Distill entire courses into concise golden sheets — the ultimate review material before exams."
+              descriptionAr="يلخّص المقررات كاملةً في أوراق ذهبية مركّزة — المادة المثالية للمراجعة قبل الامتحان."
               accent="red"
             />
             <FeatureCard
               icon={DocumentTextIcon}
               title="PDF Analysis"
+              titleAr="تحليل ملفات PDF"
               description="Upload any PDF and get instant summaries, key points, and generated questions from the content."
+              descriptionAr="ارفع أي ملف PDF واحصل على ملخصات فورية ونقاط رئيسية وأسئلة مولّدة من المحتوى."
               accent="blue"
             />
             <FeatureCard
               icon={LightBulbIcon}
               title="AI Study Assistant"
+              titleAr="مساعد الدراسة الذكي"
               description="Your personal AI tutor that answers questions, explains concepts, and guides your learning journey."
+              descriptionAr="مدرّسك الشخصي بالذكاء الاصطناعي — يجيب على أسئلتك ويشرح المفاهيم ويرشدك في رحلة تعلّمك."
               accent="orange"
             />
           </div>
@@ -507,19 +548,24 @@ export function WaitlistLanding() {
             About{" "}
             <span style={{ backgroundImage: "linear-gradient(135deg, #2563EB, #DC2626)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>SVU AI Studio</span>
           </h2>
+          <p className="text-sm text-slate-500" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>عن SVU AI Studio</p>
           <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
             SVU AI Studio is an AI-powered educational platform built specifically for Syrian Virtual University students to improve studying, organization, productivity, and exam preparation. Our mission is to make education smarter, more accessible, and more effective through cutting-edge artificial intelligence.
           </p>
+          <p className="text-sm text-slate-500 leading-relaxed max-w-2xl mx-auto" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>
+            SVU AI Studio هي منصة تعليمية مدعومة بالذكاء الاصطناعي، مصمَّمة خصيصاً لطلاب الجامعة الافتراضية السورية لتحسين الدراسة والتنظيم والإنتاجية والاستعداد للامتحانات. مهمّتنا جعل التعليم أذكى وأسهل وأكثر فعاليّة عبر أحدث تقنيات الذكاء الاصطناعي.
+          </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
             {[
-              { value: "500+", label: "Early Access" },
-              { value: "6", label: "AI Tools" },
-              { value: "24/7", label: "AI Assistant" },
-              { value: "100%", label: "Free Beta" },
+              { value: "500+", label: "Early Access", labelAr: "وصول مبكر" },
+              { value: "6", label: "AI Tools", labelAr: "أدوات ذكية" },
+              { value: "24/7", label: "AI Assistant", labelAr: "مساعد دائم" },
+              { value: "100%", label: "Free Beta", labelAr: "نسخة تجريبية مجانية" },
             ].map((stat) => (
               <div key={stat.label} className="rounded-xl p-4" style={{ background: "rgba(15,23,42,0.5)", border: "1px solid rgba(37,99,235,0.1)" }}>
                 <p className="text-2xl font-black text-white">{stat.value}</p>
                 <p className="text-xs text-slate-500 mt-1">{stat.label}</p>
+                <p className="text-[10px] text-slate-600" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>{stat.labelAr}</p>
               </div>
             ))}
           </div>
@@ -541,12 +587,18 @@ export function WaitlistLanding() {
           <p className="text-slate-400 text-base max-w-lg mx-auto">
             Don&apos;t miss your chance to be among the first students to experience AI-powered learning. Sign up today.
           </p>
+          <p className="text-sm text-slate-500 max-w-lg mx-auto" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>
+            لا تفوّت فرصتك لتكون من أوائل الطلاب الذين يجرّبون التعلّم بالذكاء الاصطناعي. سجّل اليوم.
+          </p>
           <a
             href="#hero"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white transition-all duration-300 hover:scale-105"
             style={{ background: "linear-gradient(135deg, #2563EB, #1d4ed8)", boxShadow: "0 8px 32px rgba(37,99,235,0.35)" }}
           >
-            Join the Waitlist Now
+            <span className="flex flex-col items-center leading-tight">
+              <span>Join the Waitlist Now</span>
+              <span className="text-[10px] opacity-75 font-semibold" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>انضم الآن</span>
+            </span>
             <ArrowRightIcon className="w-5 h-5" />
           </a>
         </div>
@@ -564,6 +616,7 @@ export function WaitlistLanding() {
             <span className="text-sm font-bold text-white" style={{ fontFamily: "Orbitron, sans-serif" }}>Svu Ai Studio</span>
           </div>
           <p className="text-xs text-slate-500">Built with passion. Designed for the future.</p>
+          <p className="text-[11px] text-slate-600" dir="rtl" style={{ fontFamily: "Cairo, sans-serif" }}>صُمِّم بشغف. للمستقبل.</p>
           {/* By HYDRA — footer only */}
           <p
             className="text-sm font-black tracking-[0.3em] uppercase"
